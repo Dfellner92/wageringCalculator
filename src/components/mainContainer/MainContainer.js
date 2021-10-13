@@ -457,10 +457,10 @@ function MainContainer() {
         </div>
       </div>
       <div class="containing">
-        <h3 class="heading">Total</h3>
+        <h3 class="heading">Cost of Wager</h3>
         <div>
           <button onClick={() => findTotal(firstArray, secondArray)}>
-            findTotal
+            find
           </button>
         </div>
         <br />
