@@ -32,22 +32,18 @@ function MainContainer() {
 
   const findTotal = (first, second) => {
     let secondTest = [];
-    let uniqueValues = [];
 
-    for (const element of first) {
-      for (const element2 of second) {
-        if (!first.includes(element2)) {
-          secondTest.push(element2);
+    for (let i = 0; i < first.length; i++) {
+      for (let j = 0; j < second.length; j++) {
+        if (second[j] !== first[i]) {
+          secondTest.push(second[j]);
         }
       }
     }
-    for (let i = 0; i < secondTest.length; i++) {
-      if (!uniqueValues.includes(secondTest[i])) {
-        uniqueValues.push(secondTest[i]);
-      }
-    }
-    console.log(uniqueValues);
-    setFinalTotal(uniqueValues.length);
+    
+
+    console.log(secondTest.length);
+    setFinalTotal(secondTest.length);
   };
 
   return (
