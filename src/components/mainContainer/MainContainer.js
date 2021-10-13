@@ -40,10 +40,51 @@ function MainContainer() {
         }
       }
     }
-    
 
     console.log(secondTest.length);
     setFinalTotal(secondTest.length);
+  };
+
+  const resetTotal = () => {
+    firstArray = [];
+    secondArray = [];
+    setFinalTotal(0);
+    document.getElementById("check-first-1").classList.add("hide");
+    document.getElementById("check-first-2").classList.add("hide");
+    document.getElementById("check-first-3").classList.add("hide");
+    document.getElementById("check-first-4").classList.add("hide");
+    document.getElementById("check-first-5").classList.add("hide");
+    document.getElementById("check-first-6").classList.add("hide");
+    document.getElementById("check-first-7").classList.add("hide");
+    document.getElementById("check-first-8").classList.add("hide");
+    document.getElementById("check-first-9").classList.add("hide");
+    document.getElementById("check-first-10").classList.add("hide");
+    document.getElementById("check-first-11").classList.add("hide");
+    document.getElementById("check-first-12").classList.add("hide");
+    document.getElementById("check-first-13").classList.add("hide");
+    document.getElementById("check-first-14").classList.add("hide");
+    document.getElementById("check-first-15").classList.add("hide");
+    document.getElementById("check-first-16").classList.add("hide");
+    document.getElementById("check-first-17").classList.add("hide");
+    document.getElementById("check-first-18").classList.add("hide");
+    document.getElementById("check-second-1").classList.add("hide");
+    document.getElementById("check-second-2").classList.add("hide");
+    document.getElementById("check-second-3").classList.add("hide");
+    document.getElementById("check-second-4").classList.add("hide");
+    document.getElementById("check-second-5").classList.add("hide");
+    document.getElementById("check-second-6").classList.add("hide");
+    document.getElementById("check-second-7").classList.add("hide");
+    document.getElementById("check-second-8").classList.add("hide");
+    document.getElementById("check-second-9").classList.add("hide");
+    document.getElementById("check-second-10").classList.add("hide");
+    document.getElementById("check-second-11").classList.add("hide");
+    document.getElementById("check-second-12").classList.add("hide");
+    document.getElementById("check-second-13").classList.add("hide");
+    document.getElementById("check-second-14").classList.add("hide");
+    document.getElementById("check-second-15").classList.add("hide");
+    document.getElementById("check-second-16").classList.add("hide");
+    document.getElementById("check-second-17").classList.add("hide");
+    document.getElementById("check-second-18").classList.add("hide");
   };
 
   return (
@@ -461,7 +502,8 @@ function MainContainer() {
         <div>
           <button onClick={() => findTotal(firstArray, secondArray)}>
             find
-          </button>
+          </button>{" "}
+          <button onClick={() => resetTotal()}>reset</button>
         </div>
         <br />
         <div>{`$${finalTotal}.00`}</div>
