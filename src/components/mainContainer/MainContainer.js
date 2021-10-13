@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import FirstButtons from "../FirstButtons";
 import SecondButtons from "../SecondButtons";
@@ -8,11 +8,6 @@ function MainContainer() {
   const [finalTotal, setFinalTotal] = useState(0);
   const [firstArray, setFirstArray] = useState([]);
   const [secondArray, setSecondArray] = useState([]);
-
-  useEffect(() => {
-    console.log(firstArray);
-    console.log(secondArray);
-  }, [firstArray, secondArray]);
 
   const handleFirst = (num) => {
     if (firstArray.includes(num)) {
@@ -37,10 +32,10 @@ function MainContainer() {
   const findTotal = (firstPlaceState, secondPlaceState) => {
     let viablePairings = [];
 
-    for (let i = 0; i < firstPlaceState.length; i++) {
-      for (let j = 0; j < secondPlaceState.length; j++) {
-        if (secondPlaceState[j] !== firstPlaceState[i]) {
-          viablePairings.push(secondPlaceState[j]);
+    for (const first of firstPlaceState) {
+      for (const second of secondPlaceState) {
+        if (second !== first) {
+          viablePairings.push(second);
         }
       }
     }
