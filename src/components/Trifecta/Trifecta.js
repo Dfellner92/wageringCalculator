@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import FirstButtons from "./FirstButtons";
-import SecondButtons from "./SecondButtons";
-import ThirdButtons from "./ThirdButtons";
+import FirstButtons from "../Buttons/FirstButtons";
+import SecondButtons from "../Buttons/SecondButtons";
+import ThirdButtons from "../Buttons/ThirdButtons";
 
 function Trifecta() {
   const [finalTotal, setFinalTotal] = useState(0);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import FirstButtons from "./FirstButtons";
-import SecondButtons from "./SecondButtons";
+import FirstButtons from "../Buttons/FirstButtons";
+import SecondButtons from "../Buttons/SecondButtons";
 
 function Exacta() {
   const [finalTotal, setFinalTotal] = useState(0);

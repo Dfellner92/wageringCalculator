@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import FirstButtons from "./FirstButtons";
-import SecondButtons from "./SecondButtons";
-import ThirdButtons from "./ThirdButtons";
-import FourthButtons from "./FourthButtons";
+import FirstButtons from "../Buttons/FirstButtons";
+import SecondButtons from "../Buttons/SecondButtons";
+import ThirdButtons from "../Buttons/ThirdButtons";
+import FourthButtons from "../Buttons/FourthButtons";
 
 function Superfecta() {
   const [finalTotal, setFinalTotal] = useState(0);
