@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from './components/Navbar/Navbar';
 import Exacta from "./components/Exacta/Exacta";
 import Trifecta from './components/Trifecta/Trifecta';
+import Superfecta from './components/Superfecta/Superfecta';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Exacta} />
           <Route exact path="/trifecta" component={Trifecta}/>
+          <Route exact path="/superfecta" component={Superfecta} />
         </Switch>
       </Router>
     </div>

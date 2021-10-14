@@ -95,7 +95,7 @@ function Superfecta() {
 
   return (
     <div>
-      <h2 className="header">Trifecta</h2>
+      <h2 className="header">Superfecta</h2>
       <FirstButtons handler={handleFirst} />
       <SecondButtons handler={handleSecond} />
       <ThirdButtons handler={handleThird} />
