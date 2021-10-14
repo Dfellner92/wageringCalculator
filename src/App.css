@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10vh;
+}
+
+.containing-checks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.firstButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-tag {
+  height: 5vh !important;
+  width: 5vw !important;
+}
+
+.button-tag__check {
+  height: 5vh;
+  width: 5vw;
+}
+
+.hide {
+  display: none;
+}
