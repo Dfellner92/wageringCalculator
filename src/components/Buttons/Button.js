@@ -3,7 +3,7 @@ import React from "react";
 function Button(props) {
   return (
     <div class="button">
-      <button class="button-tag" onClick={() => props.handler(1)}>
+      <button class="button-tag" onClick={() => props.handler(props.number)}>
         {props.number}
       </button>
       <img
