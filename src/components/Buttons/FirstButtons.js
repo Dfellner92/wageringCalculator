@@ -1,21 +1,12 @@
 import React from "react";
+import Button from './Button';
 
 function FirstButtons(props) {
   return (
     <div class="container">
       <h3 class="header">First Place</h3>
       <div class="firstButtons">
-        <div class="button">
-          <button class="button-tag" onClick={() => props.handler(1)}>
-            1
-          </button>
-          <img
-            id="check-first-1"
-            class="button-tag__check hide"
-            src="https://img.icons8.com/material-outlined/24/000000/checkmark--v1.png"
-            alt="check first one"
-          />
-        </div>
+        <Button number="1" row="first" handler={props.handler}/>
         <div class="button">
           <button class="button-tag" onClick={() => props.handler(2)}>
             2
