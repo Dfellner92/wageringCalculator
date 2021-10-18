@@ -10,20 +10,20 @@ function Exacta() {
 
   const handleFirst = (num) => {
     if (firstArray.includes(num)) {
-      document.getElementById(`check-first-${num}`).classList.add("hide");
+      //document.getElementById(`check-first-${num}`).classList.add("hide");
       setFirstArray(firstArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-first-${num}`).classList.remove("hide");
+      //document.getElementById(`check-first-${num}`).classList.remove("hide");
       setFirstArray([...firstArray, num])
     }
   };
 
   const handleSecond = (num) => {
     if (secondArray.includes(num)) {
-      document.getElementById(`check-second-${num}`).classList.add("hide");
+     // document.getElementById(`check-second-${num}`).classList.add("hide");
       setSecondArray(secondArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-second-${num}`).classList.remove("hide");
+     // document.getElementById(`check-second-${num}`).classList.remove("hide");
       setSecondArray([...secondArray, num]);
     }
   };
@@ -54,8 +54,8 @@ function Exacta() {
   return (
     <div>
       <h2 className="header">Exacta</h2>
-      <FirstButtons handler={handleFirst} />
-      <SecondButtons handler={handleSecond} />
+      <FirstButtons activeButtons={firstArray} handler={handleFirst} />
+      <SecondButtons activeButtons={secondArray} handler={handleSecond} />
       <div class="container">
         <h3 class="header">Cost of Wager</h3>
         <div>

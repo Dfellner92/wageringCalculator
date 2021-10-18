@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "./Button";
+import SecondButton from "./SecondButton";
 import { BUTTON_NUMBERS } from "../../util/button-numbers";
 
 function SecondButtons(props) {
@@ -9,7 +9,7 @@ function SecondButtons(props) {
       <h3 class="header">Second Place</h3>
       <div class="firstButtons">
         {BUTTON_NUMBERS.map((number) => {
-          return <Button number={number} row="second" handler={props.handler} />;
+          return <SecondButton secondButtons={props.activeButtons} number={number} row="second" handler={props.handler} />;
         })}
       </div>
     </div>

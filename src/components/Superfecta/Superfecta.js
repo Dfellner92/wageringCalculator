@@ -14,40 +14,40 @@ function Superfecta() {
 
   const handleFirst = (num) => {
     if (firstArray.includes(num)) {
-      document.getElementById(`check-first-${num}`).classList.add("hide");
+      //document.getElementById(`check-first-${num}`).classList.add("hide");
       setFirstArray(firstArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-first-${num}`).classList.remove("hide");
+      //document.getElementById(`check-first-${num}`).classList.remove("hide");
       setFirstArray([...firstArray, num]);
     }
   };
 
   const handleSecond = (num) => {
     if (secondArray.includes(num)) {
-      document.getElementById(`check-second-${num}`).classList.add("hide");
+      //document.getElementById(`check-second-${num}`).classList.add("hide");
       setSecondArray(secondArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-second-${num}`).classList.remove("hide");
+      //document.getElementById(`check-second-${num}`).classList.remove("hide");
       setSecondArray([...secondArray, num]);
     }
   };
 
   const handleThird = (num) => {
     if (thirdArray.includes(num)) {
-      document.getElementById(`check-third-${num}`).classList.add("hide");
+      //document.getElementById(`check-third-${num}`).classList.add("hide");
       setThirdArray(thirdArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-third-${num}`).classList.remove("hide");
+      //document.getElementById(`check-third-${num}`).classList.remove("hide");
       setThirdArray([...thirdArray, num]);
     }
   };
 
   const handleFourth = (num) => {
     if (fourthArray.includes(num)) {
-      document.getElementById(`check-fourth-${num}`).classList.add("hide");
+      //document.getElementById(`check-fourth-${num}`).classList.add("hide");
       setFourthArray(fourthArray.filter((number) => number !== num));
     } else {
-      document.getElementById(`check-fourth-${num}`).classList.remove("hide");
+      //document.getElementById(`check-fourth-${num}`).classList.remove("hide");
       setFourthArray([...fourthArray, num]);
     }
   };
@@ -96,10 +96,10 @@ function Superfecta() {
   return (
     <div>
       <h2 className="header">Superfecta</h2>
-      <FirstButtons handler={handleFirst} />
-      <SecondButtons handler={handleSecond} />
-      <ThirdButtons handler={handleThird} />
-      <FourthButtons handler={handleFourth} />
+      <FirstButtons activeButtons={firstArray} handler={handleFirst} />
+      <SecondButtons activeButtons={secondArray} handler={handleSecond} />
+      <ThirdButtons activeButtons={thirdArray} handler={handleThird} />
+      <FourthButtons activeButtons={fourthArray} handler={handleFourth} />
       <div class="container">
         <h3 class="header">Cost of Wager</h3>
         <div>

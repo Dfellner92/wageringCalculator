@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import ThirdButton from "./ThirdButton";
 import { BUTTON_NUMBERS } from "../../util/button-numbers";
 
 function ThirdButtons(props) {
@@ -8,7 +8,9 @@ function ThirdButtons(props) {
       <h3 class="header">Third Place</h3>
       <div class="firstButtons">
         {BUTTON_NUMBERS.map((number) => {
-          return <Button number={number} row="third" handler={props.handler} />;
+          return (
+            <ThirdButton thirdButtons={props.activeButtons} number={number} row="third" handler={props.handler} />
+          );
         })}
       </div>
     </div>
