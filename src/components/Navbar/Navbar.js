@@ -8,7 +8,8 @@ function Navbar() {
             <div className="links">
                 <a className="link" href="/">Exacta</a>
                 <a className="link" href="/trifecta">Trifecta</a>
-                <a href="/superfecta">Superfecta</a>
+                <a className="link" href="/superfecta">Superfecta</a>
+                <a href="/picks">Picks</a>
             </div>
         </nav>
     )
