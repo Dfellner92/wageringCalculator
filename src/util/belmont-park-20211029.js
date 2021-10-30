@@ -1,7 +1,10 @@
 const BELMONT_PARK_OCT_29_2021 = {
+  RaceID: {
+    name: "BEL",
+  },
   BEL01: {
     race: {
-      name: "BEL01"
+      number: "01",
     },
     Group_A: {
       1: "6",
@@ -31,6 +34,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   BEL02: {
+    race: {
+      number: "02",
+    },
     Group_A: {
       1: "5",
       2: "4",

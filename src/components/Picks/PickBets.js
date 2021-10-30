@@ -3,25 +3,9 @@ import React, { useEffect, useState } from "react";
 import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
 
 const PickBets = () => {
-  const { BEL01, BEL02 } = BELMONT_PARK_OCT_29_2021;
-  console.log(BEL01);
+  const { RaceID, BEL01, BEL02 } = BELMONT_PARK_OCT_29_2021;
+  console.log(RaceID.name);
 
-  const updateTable = async () => {
-    document.getElementById("race_01").innerHTML = await BEL01.race.name;
-    document.getElementById("01_1").innerHTML = await BEL01.Group_A[1];
-    document.getElementById("01_2").innerHTML = await BEL01.Group_A[2];
-    document.getElementById("01_3").innerHTML = await BEL01.Group_A[3];
-    document.getElementById("01_4").innerHTML = await BEL01.Group_A[4];
-    document.getElementById("01_4.5").innerHTML = await BEL01.Group_A[4.5];
-    document.getElementById("01_4.9").innerHTML = await BEL01.Group_A[4.9];
-    document.getElementById("01_5").innerHTML = await BEL01.Group_B[5];
-    document.getElementById("01_6").innerHTML = await BEL01.Group_B[6];
-    document.getElementById("01_7").innerHTML = await BEL01.Group_B[7];
-  };
-
-  useEffect(() => {
-    updateTable();
-  });
 
   return (
     <div>
@@ -241,11 +225,11 @@ const PickBets = () => {
             <td
               id="race_01"
               style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            ></td>
+            >{RaceID.name + " " + BEL01.race.number}</td>
             <td
               id="01_1"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL01.Group_A[1]}</td>
             <td
               id="01_2"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
