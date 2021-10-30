@@ -1,5 +1,8 @@
 const BELMONT_PARK_OCT_29_2021 = {
   BEL01: {
+    race: {
+      name: "BEL01"
+    },
     Group_A: {
       1: "6",
       2: "3",

@@ -7,6 +7,7 @@ const PickBets = () => {
   console.log(BEL01);
 
   const updateTable = async () => {
+    document.getElementById("race_01").innerHTML = await BEL01.race.name;
     document.getElementById("01_1").innerHTML = await BEL01.Group_A[1];
     document.getElementById("01_2").innerHTML = await BEL01.Group_A[2];
     document.getElementById("01_3").innerHTML = await BEL01.Group_A[3];
@@ -238,6 +239,7 @@ const PickBets = () => {
           </tr>
           <tr>
             <td
+              id="race_01"
               style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
             ></td>
             <td
@@ -327,64 +329,64 @@ const PickBets = () => {
             ></td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[1]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[2]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[3]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[4]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[4.5]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_A[4.9]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[5]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[6]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[7]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[8]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[9]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[9.5]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_B[9.6]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[10]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[11]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[12]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[13]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[14]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[15]}</td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            ></td>
+            >{BEL02.Group_C[16]}</td>
           </tr>
           <tr>
             <td
