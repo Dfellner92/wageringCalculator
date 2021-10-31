@@ -5,12 +5,31 @@ import KEENELAND_10_29_21 from "../../util/keeneland-20211029";
 
 const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
+  const [pickType, setPickType] = useState(3);
+  const [pickFiveValues, setPickFiveValues] = useState([]);
 
   console.log(tableData);
 
   const handleTableData = (obj) => {
     setTableData({ ...obj });
   };
+
+  const handlePickType = (number) => {
+    setPickType(number);
+  };
+
+  const handlePicks = (pairID) => {
+    console.log(pairID);
+    if (pickType === 5) {
+      if (pickFiveValues.includes(pairID)) {
+        setPickFiveValues([]);
+      } else {
+        setPickFiveValues((state) => [...state, [pairID]]);
+      }
+    }
+  };
+
+  console.log(pickFiveValues);
 
   useEffect(() => {
     setTableData(BELMONT_PARK_OCT_29_2021);
@@ -34,6 +53,14 @@ const PickBets = () => {
             >
               {KEENELAND_10_29_21.RaceID.name}
             </p>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span>{pickType}</span>
+          <div class="dropdown-content">
+            <p onClick={() => handlePickType(3)}>3</p>
+            <p onClick={() => handlePickType(4)}>4</p>
+            <p onClick={() => handlePickType(5)}>5</p>
           </div>
         </div>
       </div>
@@ -261,12 +288,14 @@ const PickBets = () => {
             <td
               id="01_1"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
+              onClick={() => handlePicks([1, 1])}
             >
               {tableData.Race01.Group_A[1]}
             </td>
             <td
               id="01_2"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
+              onClick={() => handlePicks([1, 2])}
             >
               {tableData.Race01.Group_A[2]}
             </td>
