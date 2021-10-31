@@ -35,7 +35,7 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race02: {
-    race: {
+    raceInfo: {
       number: "02",
     },
     Group_A: {
@@ -66,6 +66,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race03: {
+    raceInfo: {
+      number: "03",
+    },
     Group_A: {
       1: "7",
       2: "5",
@@ -94,6 +97,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race04: {
+    raceInfo: {
+      number: "04",
+    },
     Group_A: {
       1: "6",
       2: "1",
@@ -122,6 +128,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race05: {
+    raceInfo: {
+      number: "05",
+    },
     Group_A: {
       1: "5",
       2: "",
@@ -150,6 +159,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race06: {
+    raceInfo: {
+      number: "06",
+    },
     Group_A: {
       1: "4",
       2: "5",
@@ -178,6 +190,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race07: {
+    raceInfo: {
+      number: "07",
+    },
     Group_A: {
       1: "7",
       2: "1A",
@@ -206,6 +221,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race08: {
+    raceInfo: {
+      number: "08",
+    },
     Group_A: {
       1: "4",
       2: "",
@@ -234,6 +252,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race09: {
+    raceInfo: {
+      number: "09",
+    },
     Group_A: {
       1: "11",
       2: "",
@@ -262,6 +283,9 @@ const BELMONT_PARK_OCT_29_2021 = {
     },
   },
   Race10: {
+    raceInfo: {
+      number: "10",
+    },
     Group_A: {
       1: "6",
       2: "3",
