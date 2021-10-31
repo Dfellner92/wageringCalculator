@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
 import KEENELAND_10_29_21 from "../../util/keeneland-20211029";
@@ -14,6 +14,7 @@ import SeventhRow from "./SeventhRow";
 import EighthRow from "./EighthRow";
 import NinthRow from "./NinthRow";
 import TenthRow from "./TenthRow";
+import { handlePickStyles } from "./PickFunctions/handlePickType";
 
 const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
@@ -31,34 +32,24 @@ const PickBets = () => {
   const [tenthVals, setTenthVals] = useState([]);
   const [calcValue, setCalcValue] = useState(0);
 
-  const handleTableData = (obj) => {
-    setTableData({ ...obj });
+  const handleTableData = (raceData) => {
+    setTableData({ ...raceData });
   };
 
   const handlePickType = (number) => {
     setAllPickIDs([]);
+    setCalcValue(0);
     setFirstVals([]);
-    document.getElementById("1 1").style.backgroundColor = "";
-    document.getElementById("1 2").style.backgroundColor = "";
-    // document.getElementById("1 3").style.backgroundColor = "";
-    // document.getElementById("1 4").style.backgroundColor = "";
-    // document.getElementById("1 4.5").style.backgroundColor = "";
-    // document.getElementById("1 4.9").style.backgroundColor = "";
-    // document.getElementById("1 5").style.backgroundColor = "";
-    // document.getElementById("1 6").style.backgroundColor = "";
-    // document.getElementById("1 7").style.backgroundColor = "";
-    // document.getElementById("1 8").style.backgroundColor = "";
-    // document.getElementById("1 9").style.backgroundColor = "";
-    // document.getElementById("1 9.5").style.backgroundColor = "";
-    // document.getElementById("1 9.6").style.backgroundColor = "";
-    // document.getElementById("1 10").style.backgroundColor = "";
-    // document.getElementById("1 11").style.backgroundColor = "";
-    // document.getElementById("1 12").style.backgroundColor = "";
-    // document.getElementById("1 13").style.backgroundColor = "";
-    // document.getElementById("1 14").style.backgroundColor = "";
-    // document.getElementById("1 15").style.backgroundColor = "";
-    // document.getElementById("1 16").style.backgroundColor = "";
-
+    setSecondVals([]);
+    setThirdVals([]);
+    setFourthVals([]);
+    setFifthVals([]);
+    setSixthVals([]);
+    setSeventhVals([]);
+    setEighthVals([]);
+    setNinthVals([]);
+    setTenthVals([]);
+    handlePickStyles();
     setPickType(number);
   };
 
@@ -121,16 +112,6 @@ const PickBets = () => {
     }
   };
 
-  console.log(sixthVals);
-  console.log(seventhVals);
-  console.log(eighthVals);
-  console.log(ninthVals);
-  console.log(tenthVals);
-
-  useEffect(() => {
-    setTableData(BELMONT_PARK_OCT_29_2021);
-  }, [setTableData]);
-
   const handleCalculation = () => {
     if (pickType === 5) {
       if (
@@ -161,6 +142,8 @@ const PickBets = () => {
             ninthVals.length *
             tenthVals.length
         );
+      } else {
+        alert("Not Enough Races Selected for a Pick 5!");
       }
     }
   };
@@ -200,7 +183,9 @@ const PickBets = () => {
           >
             Calculate Wage Cost
           </button>
-          <div className="cost-block__value">${calcValue}.00</div>
+          <div id="cost-value" className="cost-block__value">
+            ${calcValue}.00
+          </div>
         </div>
       </div>
       <table>
