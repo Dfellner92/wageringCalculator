@@ -7,6 +7,16 @@ const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
   const [pickType, setPickType] = useState(3);
   const [pickFiveValues, setPickFiveValues] = useState([]);
+  const [firstVals, setFirstVals] = useState([]);
+  const [secondVals, setSecondVals] = useState([]);
+  const [thirdVals, setThirdVals] = useState([]);
+  const [fourthVals, setFourthVals] = useState([]);
+  const [fifthVals, setFifthVals] = useState([]);
+  const [sixthVals, setSixthVals] = useState([]);
+  const [seventhVals, setSeventhVals] = useState([]);
+  const [eighthVals, setEighthVals] = useState([]);
+  const [ninthVals, setNinthVals] = useState([]);
+  const [tenthVals, setTenthVals] = useState([]);
 
   console.log(tableData);
 
@@ -15,21 +25,56 @@ const PickBets = () => {
   };
 
   const handlePickType = (number) => {
+    setPickFiveValues([]);
+    setFirstVals([]);
+    document.getElementById("1 1").style.backgroundColor = "";
+    document.getElementById("1 2").style.backgroundColor = "";
+    // document.getElementById("1 3").style.backgroundColor = "";
+    // document.getElementById("1 4").style.backgroundColor = "";
+    // document.getElementById("1 4.5").style.backgroundColor = "";
+    // document.getElementById("1 4.9").style.backgroundColor = "";
+    // document.getElementById("1 5").style.backgroundColor = "";
+    // document.getElementById("1 6").style.backgroundColor = "";
+    // document.getElementById("1 7").style.backgroundColor = "";
+    // document.getElementById("1 8").style.backgroundColor = "";
+    // document.getElementById("1 9").style.backgroundColor = "";
+    // document.getElementById("1 9.5").style.backgroundColor = "";
+    // document.getElementById("1 9.6").style.backgroundColor = "";
+    // document.getElementById("1 10").style.backgroundColor = "";
+    // document.getElementById("1 11").style.backgroundColor = "";
+    // document.getElementById("1 12").style.backgroundColor = "";
+    // document.getElementById("1 13").style.backgroundColor = "";
+    // document.getElementById("1 14").style.backgroundColor = "";
+    // document.getElementById("1 15").style.backgroundColor = "";
+    // document.getElementById("1 16").style.backgroundColor = "";
+
     setPickType(number);
   };
 
-  const handlePicks = (pairID) => {
+  const handlePicks = (pairID, value) => {
     console.log(pairID);
     if (pickType === 5) {
       if (pickFiveValues.includes(pairID)) {
-        setPickFiveValues([]);
+        console.log("includes");
+        setPickFiveValues(pickFiveValues.filter((pair) => pair !== pairID));
+        document.getElementById(pairID).style.backgroundColor = "";
+        if (pairID.slice(0, 1) === "1") {
+          setFirstVals(firstVals.filter((val) => val !== value));
+        }
       } else {
-        setPickFiveValues((state) => [...state, [pairID]]);
+        console.log("doesnt include");
+        setPickFiveValues((state) => [...state, pairID]);
+        document.getElementById(pairID).style.backgroundColor =
+          "rgb(255, 80, 80)";
+        if (pairID.slice(0, 1) === "1") {
+          setFirstVals([...firstVals, value]);
+        }
       }
     }
   };
 
   console.log(pickFiveValues);
+  console.log(firstVals);
 
   useEffect(() => {
     setTableData(BELMONT_PARK_OCT_29_2021);
@@ -286,16 +331,16 @@ const PickBets = () => {
                 tableData.Race01.raceInfo.number}
             </td>
             <td
-              id="01_1"
+              id="1 1"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-              onClick={() => handlePicks([1, 1])}
+              onClick={() => handlePicks("1 1", tableData.Race01.Group_A[1])}
             >
               {tableData.Race01.Group_A[1]}
             </td>
             <td
-              id="01_2"
+              id="1 2"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-              onClick={() => handlePicks([1, 2])}
+              onClick={() => handlePicks("1 2", tableData.Race01.Group_A[2])}
             >
               {tableData.Race01.Group_A[2]}
             </td>
