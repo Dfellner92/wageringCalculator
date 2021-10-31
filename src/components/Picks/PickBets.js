@@ -1,14 +1,42 @@
 import React, { useEffect, useState } from "react";
 
 import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
+import SmellMont from "../../util/smellmont";
 
 const PickBets = () => {
-  const { RaceID, BEL01, BEL02 } = BELMONT_PARK_OCT_29_2021;
-  console.log(RaceID.name);
+  const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021});
 
+  console.log(tableData);
+
+  const handleTableData = (obj) => {
+   setTableData({ ...obj});
+  };
+
+  useEffect(() => {
+    setTableData(BELMONT_PARK_OCT_29_2021);
+  }, [setTableData]);
 
   return (
     <div>
+      <div>
+        <div class="dropdown">
+          <span>{tableData.RaceID.name}</span>
+          <div class="dropdown-content">
+            <p
+              value={BELMONT_PARK_OCT_29_2021.RaceID.name}
+              onClick={() => handleTableData(BELMONT_PARK_OCT_29_2021)}
+            >
+              {BELMONT_PARK_OCT_29_2021.RaceID.name}
+            </p>
+            <p
+              value={SmellMont.RaceID.name}
+              onClick={() => handleTableData(SmellMont)}
+            >
+              {SmellMont.RaceID.name}
+            </p>
+          </div>
+        </div>
+      </div>
       <table>
         <tbody>
           <tr>
@@ -225,11 +253,15 @@ const PickBets = () => {
             <td
               id="race_01"
               style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >{RaceID.name + " " + BEL01.race.number}</td>
+            >
+              {tableData.RaceID.abbreviation +
+                " " +
+                tableData.Race01.raceInfo.number}
+            </td>
             <td
               id="01_1"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL01.Group_A[1]}</td>
+            ></td>
             <td
               id="01_2"
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
@@ -313,64 +345,104 @@ const PickBets = () => {
             ></td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[1]}</td>
+            >
+              {tableData.Race02.Group_A[1]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[2]}</td>
+            >
+              {tableData.Race02.Group_A[2]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[3]}</td>
+            >
+              {tableData.Race02.Group_A[3]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[4]}</td>
+            >
+              {tableData.Race02.Group_A[4]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[4.5]}</td>
+            >
+              {tableData.Race02.Group_A[4.5]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_A[4.9]}</td>
+            >
+              {tableData.Race02.Group_A[4.9]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[5]}</td>
+            >
+              {tableData.Race02.Group_B[5]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[6]}</td>
+            >
+              {tableData.Race02.Group_B[6]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[7]}</td>
+            >
+              {tableData.Race02.Group_B[7]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[8]}</td>
+            >
+              {tableData.Race02.Group_B[8]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[9]}</td>
+            >
+              {tableData.Race02.Group_B[9]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[9.5]}</td>
+            >
+              {tableData.Race02.Group_B[9.5]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_B[9.6]}</td>
+            >
+              {tableData.Race02.Group_B[9.6]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[10]}</td>
+            >
+              {tableData.Race02.Group_C[10]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[11]}</td>
+            >
+              {tableData.Race02.Group_C[11]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[12]}</td>
+            >
+              {tableData.Race02.Group_C[12]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[13]}</td>
+            >
+              {tableData.Race02.Group_C[13]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[14]}</td>
+            >
+              {tableData.Race02.Group_C[14]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[15]}</td>
+            >
+              {tableData.Race02.Group_C[15]}
+            </td>
             <td
               style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >{BEL02.Group_C[16]}</td>
+            >
+              {tableData.Race02.Group_C[16]}
+            </td>
           </tr>
           <tr>
             <td

@@ -1,17 +1,17 @@
-const BELMONT_PARK_OCT_29_2021 = {
+const SmellMont = {
   RaceID: {
-    name: "BELMONT_PARK_OCT_29_2021",
-    abbreviation: "BEL",
+    name: "SmellMont",
+    abbreviation: "Smell",
   },
   Race01: {
     raceInfo: {
       number: "01",
     },
     Group_A: {
-      1: "6",
-      2: "3",
-      3: "2",
-      4: "1",
+      1: "",
+      2: "",
+      3: "",
+      4: "",
       4.5: "5",
       4.9: "",
     },
@@ -39,8 +39,8 @@ const BELMONT_PARK_OCT_29_2021 = {
       number: "02",
     },
     Group_A: {
-      1: "5",
-      2: "4",
+      1: "",
+      2: "",
       3: "1",
       4: "",
       4.5: "",
@@ -291,4 +291,4 @@ const BELMONT_PARK_OCT_29_2021 = {
   },
 };
 
-export default BELMONT_PARK_OCT_29_2021;
+export default SmellMont;
