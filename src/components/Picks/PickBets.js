@@ -3,10 +3,22 @@ import React, { useEffect, useState } from "react";
 import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
 import KEENELAND_10_29_21 from "../../util/keeneland-20211029";
 
+import PickLabels from "./PickLabels";
+import FirstRow from "./FirstRow";
+import SecondRow from "./SecondRow";
+import ThirdRow from "./ThirdRow";
+import FourthRow from "./FourthRow";
+import FifthRow from "./FifthRow";
+import SixthRow from "./SixthRow";
+import SeventhRow from "./SeventhRow";
+import EighthRow from "./EighthRow";
+import NinthRow from "./NinthRow";
+import TenthRow from "./TenthRow";
+
 const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
   const [pickType, setPickType] = useState(3);
-  const [pickFiveValues, setPickFiveValues] = useState([]);
+  const [allPickIDs, setAllPickIDs] = useState([]);
   const [firstVals, setFirstVals] = useState([]);
   const [secondVals, setSecondVals] = useState([]);
   const [thirdVals, setThirdVals] = useState([]);
@@ -17,15 +29,14 @@ const PickBets = () => {
   const [eighthVals, setEighthVals] = useState([]);
   const [ninthVals, setNinthVals] = useState([]);
   const [tenthVals, setTenthVals] = useState([]);
-
-  console.log(tableData);
+  const [calcValue, setCalcValue] = useState(0);
 
   const handleTableData = (obj) => {
     setTableData({ ...obj });
   };
 
   const handlePickType = (number) => {
-    setPickFiveValues([]);
+    setAllPickIDs([]);
     setFirstVals([]);
     document.getElementById("1 1").style.backgroundColor = "";
     document.getElementById("1 2").style.backgroundColor = "";
@@ -52,33 +63,107 @@ const PickBets = () => {
   };
 
   const handlePicks = (pairID, value) => {
-    console.log(pairID);
+    console.log(pairID.slice(0, 3));
     if (pickType === 5) {
-      if (pickFiveValues.includes(pairID)) {
+      if (allPickIDs.includes(pairID)) {
         console.log("includes");
-        setPickFiveValues(pickFiveValues.filter((pair) => pair !== pairID));
+        setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
         document.getElementById(pairID).style.backgroundColor = "";
         if (pairID.slice(0, 1) === "1") {
           setFirstVals(firstVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "2") {
+          setSecondVals(secondVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "3") {
+          setThirdVals(thirdVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "4") {
+          setFourthVals(fourthVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "5") {
+          setFifthVals(fifthVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "6") {
+          setSixthVals(sixthVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "7") {
+          setSeventhVals(seventhVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "8") {
+          setEighthVals(eighthVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 1) === "9") {
+          setNinthVals(ninthVals.filter((val) => val !== value));
+        } else if (pairID.slice(0, 3) === "Ten") {
+          setTenthVals(tenthVals.filter((val) => val !== value));
         }
       } else {
         console.log("doesnt include");
-        setPickFiveValues((state) => [...state, pairID]);
+        setAllPickIDs((state) => [...state, pairID]);
         document.getElementById(pairID).style.backgroundColor =
           "rgb(255, 80, 80)";
         if (pairID.slice(0, 1) === "1") {
           setFirstVals([...firstVals, value]);
+        } else if (pairID.slice(0, 1) === "2") {
+          setSecondVals([...secondVals, value]);
+        } else if (pairID.slice(0, 1) === "3") {
+          setThirdVals([...thirdVals, value]);
+        } else if (pairID.slice(0, 1) === "4") {
+          setFourthVals([...fourthVals, value]);
+        } else if (pairID.slice(0, 1) === "5") {
+          setFifthVals([...fifthVals, value]);
+        } else if (pairID.slice(0, 1) === "6") {
+          setSixthVals([...sixthVals, value]);
+        } else if (pairID.slice(0, 1) === "7") {
+          setSeventhVals([...seventhVals, value]);
+        } else if (pairID.slice(0, 1) === "8") {
+          setEighthVals([...eighthVals, value]);
+        } else if (pairID.slice(0, 1) === "9") {
+          setNinthVals([...ninthVals, value]);
+        } else if (pairID.slice(0, 3) === "Ten") {
+          console.log(pairID.slice(0, 3) === "Ten");
+          setTenthVals([...tenthVals, value]);
         }
       }
     }
   };
 
-  console.log(pickFiveValues);
-  console.log(firstVals);
+  console.log(sixthVals);
+  console.log(seventhVals);
+  console.log(eighthVals);
+  console.log(ninthVals);
+  console.log(tenthVals);
 
   useEffect(() => {
     setTableData(BELMONT_PARK_OCT_29_2021);
   }, [setTableData]);
+
+  const handleCalculation = () => {
+    if (pickType === 5) {
+      if (
+        firstVals.length > 0 &&
+        secondVals.length > 0 &&
+        thirdVals.length > 0 &&
+        fourthVals.length > 0 &&
+        fifthVals.length > 0
+      ) {
+        setCalcValue(
+          firstVals.length *
+            secondVals.length *
+            thirdVals.length *
+            fourthVals.length *
+            fifthVals.length
+        );
+      } else if (
+        sixthVals.length > 0 &&
+        seventhVals.length > 0 &&
+        eighthVals.length > 0 &&
+        ninthVals.length > 0 &&
+        tenthVals.length > 0
+      ) {
+        setCalcValue(
+          sixthVals.length *
+            seventhVals.length *
+            eighthVals.length *
+            ninthVals.length *
+            tenthVals.length
+        );
+      }
+    }
+  };
 
   return (
     <div>
@@ -101,1339 +186,36 @@ const PickBets = () => {
           </div>
         </div>
         <div class="dropdown">
-          <span>{pickType}</span>
+          <span>Pick {pickType}</span>
           <div class="dropdown-content">
-            <p onClick={() => handlePickType(3)}>3</p>
-            <p onClick={() => handlePickType(4)}>4</p>
-            <p onClick={() => handlePickType(5)}>5</p>
+            <p onClick={() => handlePickType(3)}>Pick 3</p>
+            <p onClick={() => handlePickType(4)}>Pick 4</p>
+            <p onClick={() => handlePickType(5)}>Pick 5</p>
           </div>
+        </div>
+        <div className="cost-block">
+          <button
+            className="cost-block__button"
+            onClick={() => handleCalculation()}
+          >
+            Calculate Wage Cost
+          </button>
+          <div className="cost-block__value">${calcValue}.00</div>
         </div>
       </div>
       <table>
         <tbody>
-          <tr>
-            <td></td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              1
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              2
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              3
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              4
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              4.5
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "lightgreen",
-              }}
-            >
-              4.9
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              5
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              6
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              7
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              8
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              9
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              9.5
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "#ccccff",
-              }}
-            >
-              9.6
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              10
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              11
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              12
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              13
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              14
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              15
-            </td>
-            <td
-              style={{
-                border: "1px solid black",
-                height: "5vh",
-                width: "4vw",
-                backgroundColor: "black",
-                color: "white",
-              }}
-            >
-              16
-            </td>
-          </tr>
-          <tr>
-            <td
-              id="race_01"
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race01.raceInfo.number}
-            </td>
-            <td
-              id="1 1"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-              onClick={() => handlePicks("1 1", tableData.Race01.Group_A[1])}
-            >
-              {tableData.Race01.Group_A[1]}
-            </td>
-            <td
-              id="1 2"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-              onClick={() => handlePicks("1 2", tableData.Race01.Group_A[2])}
-            >
-              {tableData.Race01.Group_A[2]}
-            </td>
-            <td
-              id="01_3"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_A[3]}
-            </td>
-            <td
-              id="01_4"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_A[4]}
-            </td>
-            <td
-              id="01_4.5"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_A[4.5]}
-            </td>
-            <td
-              id="01_4.9"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_A[4.9]}
-            </td>
-            <td
-              id="01_5"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[5]}
-            </td>
-            <td
-              id="01_6"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[6]}
-            </td>
-            <td
-              id="01_7"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[7]}
-            </td>
-            <td
-              id="01_8"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[8]}
-            </td>
-            <td
-              id="01_9"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[9]}
-            </td>
-            <td
-              id="01_9.5"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[9.5]}
-            </td>
-            <td
-              id="01_9.6"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_B[9.6]}
-            </td>
-            <td
-              id="01_10"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[10]}
-            </td>
-            <td
-              id="01_11"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[11]}
-            </td>
-            <td
-              id="01_12"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[12]}
-            </td>
-            <td
-              id="01_13"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[13]}
-            </td>
-            <td
-              id="01_14"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[14]}
-            </td>
-            <td
-              id="01_15"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[15]}
-            </td>
-            <td
-              id="01_16"
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race01.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race02.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race02.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race03.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race03.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race04.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race04.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race05.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race05.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race06.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race06.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race07.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race07.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race08.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race08.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race09.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race09.Group_C[16]}
-            </td>
-          </tr>
-          <tr>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
-            >
-              {tableData.RaceID.abbreviation +
-                " " +
-                tableData.Race10.raceInfo.number}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[1]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[2]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[3]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[4]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[4.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_A[4.9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[7]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[8]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[9]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[9.5]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_B[9.6]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[10]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[11]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[12]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[13]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[14]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[15]}
-            </td>
-            <td
-              style={{ border: "1px solid black", height: "8vh", width: "4vw" }}
-            >
-              {tableData.Race10.Group_C[16]}
-            </td>
-          </tr>
+          <PickLabels />
+          <FirstRow handlePicks={handlePicks} tableData={tableData} />
+          <SecondRow handlePicks={handlePicks} tableData={tableData} />
+          <ThirdRow handlePicks={handlePicks} tableData={tableData} />
+          <FourthRow handlePicks={handlePicks} tableData={tableData} />
+          <FifthRow handlePicks={handlePicks} tableData={tableData} />
+          <SixthRow handlePicks={handlePicks} tableData={tableData} />
+          <SeventhRow handlePicks={handlePicks} tableData={tableData} />
+          <EighthRow handlePicks={handlePicks} tableData={tableData} />
+          <NinthRow handlePicks={handlePicks} tableData={tableData} />
+          <TenthRow handlePicks={handlePicks} tableData={tableData} />
         </tbody>
       </table>
     </div>

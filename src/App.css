@@ -101,3 +101,17 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.cost-block {
+  display: inline-block;
+  padding: 3vh;
+}
+
+.cost-block__button {
+  display: inline-block;
+  margin-right: 3vw;
+}
+
+.cost-block__value {
+  display: inline-block;
+}
