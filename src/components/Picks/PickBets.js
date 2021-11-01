@@ -124,6 +124,19 @@ const PickBets = () => {
         secondVals.length > 0 &&
         thirdVals.length > 0 &&
         fourthVals.length > 0 &&
+        fifthVals.length > 0 &&
+        sixthVals.length > 0 &&
+        seventhVals.length > 0 &&
+        eighthVals.length > 0 &&
+        ninthVals.length > 0 &&
+        tenthVals.length > 0
+      ) {
+        alert("One bet at a time!")
+      } else if (
+        firstVals.length > 0 &&
+        secondVals.length > 0 &&
+        thirdVals.length > 0 &&
+        fourthVals.length > 0 &&
         fifthVals.length > 0
       ) {
         setCalcValue(
