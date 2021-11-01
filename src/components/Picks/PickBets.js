@@ -32,11 +32,7 @@ const PickBets = () => {
   const [tenthVals, setTenthVals] = useState([]);
   const [calcValue, setCalcValue] = useState(0);
 
-  const handleTableData = (raceData) => {
-    setTableData({ ...raceData });
-  };
-
-  const handlePickType = (number) => {
+  const stateReset = () => {
     setAllPickIDs([]);
     setCalcValue(0);
     setFirstVals([]);
@@ -50,6 +46,15 @@ const PickBets = () => {
     setNinthVals([]);
     setTenthVals([]);
     handlePickStyles();
+  }
+
+  const handleTableData = (raceData) => {
+    stateReset();
+    setTableData({ ...raceData });
+  };
+
+  const handlePickType = (number) => {
+    stateReset();
     setPickType(number);
   };
 
