@@ -46,7 +46,7 @@ const PickBets = () => {
     setNinthVals([]);
     setTenthVals([]);
     handlePickStyles();
-  }
+  };
 
   const handleTableData = (raceData) => {
     stateReset();
@@ -60,7 +60,7 @@ const PickBets = () => {
 
   const handlePicks = (pairID, value) => {
     console.log(pairID.slice(0, 3));
-    if (pickType === 5) {
+    if (pickType === 5 || pickType === 3) {
       if (allPickIDs.includes(pairID)) {
         console.log("includes");
         setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
@@ -118,7 +118,57 @@ const PickBets = () => {
   };
 
   const handleCalculation = () => {
-    if (pickType === 5) {
+    if (pickType === 3) {
+      if (
+        firstVals.length > 0 &&
+        secondVals.length > 0 &&
+        thirdVals.length > 0
+      ) {
+        setCalcValue(firstVals.length * secondVals.length * thirdVals.length);
+      } else if (
+        secondVals.length > 0 &&
+        thirdVals.length > 0 &&
+        fourthVals.length > 0
+      ) {
+        setCalcValue(secondVals.length * thirdVals.length * fourthVals.length);
+      } else if (
+        thirdVals.length > 0 &&
+        fourthVals.length > 0 &&
+        fifthVals.length > 0
+      ) {
+        setCalcValue(thirdVals.length * fourthVals.length * fifthVals.length);
+      } else if (
+        fourthVals.length > 0 &&
+        fifthVals.length > 0 &&
+        sixthVals.length > 0
+      ) {
+        setCalcValue(fourthVals.length * fifthVals.length * sixthVals.length);
+      } else if (
+        fifthVals.length > 0 &&
+        sixthVals.length > 0 &&
+        seventhVals.length > 0
+      ) {
+        setCalcValue(fifthVals.length * sixthVals.length * seventhVals.length);
+      }else if (
+        sixthVals.length > 0 &&
+        seventhVals.length > 0 &&
+        eighthVals.length > 0
+      ) {
+        setCalcValue(sixthVals.length * seventhVals.length * eighthVals.length);
+      }else if (
+        seventhVals.length > 0 &&
+        eighthVals.length > 0 &&
+        ninthVals.length > 0
+      ) {
+        setCalcValue(seventhVals.length * eighthVals.length * ninthVals.length);
+      }else if (
+        eighthVals.length > 0 &&
+        ninthVals.length > 0 &&
+        tenthVals.length > 0
+      ) {
+        setCalcValue(eighthVals.length * ninthVals.length * tenthVals.length);
+      }
+    } else if (pickType === 5) {
       if (
         firstVals.length > 0 &&
         secondVals.length > 0 &&
@@ -131,7 +181,7 @@ const PickBets = () => {
         ninthVals.length > 0 &&
         tenthVals.length > 0
       ) {
-        alert("One bet at a time!")
+        alert("One bet at a time!");
       } else if (
         firstVals.length > 0 &&
         secondVals.length > 0 &&
