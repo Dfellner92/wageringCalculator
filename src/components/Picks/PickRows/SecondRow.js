@@ -1,22 +1,22 @@
 import React from "react";
 
-import { RACE_PLACEMENTS } from "../../util/race-placements";
+import { RACE_PLACEMENTS } from "../../../util/race-placements";
 
-function EighthRow(props) {
+function SecondRow(props) {
   return (
     <tr>
       <td
-        id="race_08"
+        id="race_02"
         style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
       >
         {props.tableData.RaceID.abbreviation +
           " " +
-          props.tableData.Race08.raceInfo.number}
+          props.tableData.Race02.raceInfo.number}
       </td>
       {RACE_PLACEMENTS.map((place) =>
-        props.tableData.Race08.Races[place] !== "" ? (
+        props.tableData.Race02.Races[place] !== "" ? (
           <td
-            id={`8 ${place}`}
+            id={`2 ${place}`}
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -24,16 +24,16 @@ function EighthRow(props) {
             }}
             onClick={() =>
               props.handlePicks(
-                `8 ${place}`,
-                props.tableData.Race08.Races[place]
+                `2 ${place}`,
+                props.tableData.Race02.Races[place]
               )
             }
           >
-            {props.tableData.Race08.Races[place]}
+            {props.tableData.Race02.Races[place]}
           </td>
         ) : (
           <td
-            id={`8 ${place}`}
+            id={`2 ${place}`}
             style={{
               height: "8vh",
               width: "4vw",
@@ -45,4 +45,4 @@ function EighthRow(props) {
   );
 }
 
-export default EighthRow;
+export default SecondRow;

@@ -1,22 +1,22 @@
 import React from "react";
 
-import { RACE_PLACEMENTS } from "../../util/race-placements";
+import { RACE_PLACEMENTS } from "../../../util/race-placements";
 
-function SeventhRow(props) {
+function FirstRow(props) {
   return (
     <tr>
       <td
-        id="race_07"
+        id="race_01"
         style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
       >
         {props.tableData.RaceID.abbreviation +
           " " +
-          props.tableData.Race07.raceInfo.number}
+          props.tableData.Race01.raceInfo.number}
       </td>
       {RACE_PLACEMENTS.map((place) =>
-        props.tableData.Race07.Races[place] !== "" ? (
+        props.tableData.Race01.Races[place] !== "" ? (
           <td
-            id={`7 ${place}`}
+            id={`1 ${place}`}
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -24,25 +24,22 @@ function SeventhRow(props) {
             }}
             onClick={() =>
               props.handlePicks(
-                `7 ${place}`,
-                props.tableData.Race07.Races[place]
+                `1 ${place}`,
+                props.tableData.Race01.Races[place]
               )
             }
           >
-            {props.tableData.Race07.Races[place]}
+            {props.tableData.Race01.Races[place]}
           </td>
         ) : (
-          <td
-            id={`7 ${place}`}
-            style={{
-              height: "8vh",
-              width: "4vw",
-            }}
-          ></td>
+          <td id={`1 ${place}`}
+          style={{
+            height: "8vh",
+            width: "4vw"}}></td>
         )
       )}
     </tr>
   );
 }
 
-export default SeventhRow;
+export default FirstRow;

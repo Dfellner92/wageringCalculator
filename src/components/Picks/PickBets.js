@@ -4,17 +4,20 @@ import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
 import KEENELAND_10_29_21 from "../../util/keeneland-20211029";
 
 import PickLabels from "./PickLabels";
-import FirstRow from "./FirstRow";
-import SecondRow from "./SecondRow";
-import ThirdRow from "./ThirdRow";
-import FourthRow from "./FourthRow";
-import FifthRow from "./FifthRow";
-import SixthRow from "./SixthRow";
-import SeventhRow from "./SeventhRow";
-import EighthRow from "./EighthRow";
-import NinthRow from "./NinthRow";
-import TenthRow from "./TenthRow";
+import FirstRow from "./PickRows/FirstRow";
+import SecondRow from "./PickRows/SecondRow";
+import ThirdRow from "./PickRows/ThirdRow";
+import FourthRow from "./PickRows/FourthRow";
+import FifthRow from "./PickRows/FifthRow";
+import SixthRow from "./PickRows/SixthRow";
+import SeventhRow from "./PickRows/SeventhRow";
+import EighthRow from "./PickRows/EighthRow";
+import NinthRow from "./PickRows/NinthRow";
+import TenthRow from "./PickRows/TenthRow";
 import { handlePickStyles } from "./PickFunctions/handlePickType";
+import TableDataDropdown from "./PickMenus/TableDataDropdown";
+import PickTypeMenu from "./PickMenus/PickTypeMenu";
+import CostRender from "./PickMenus/CostRender";
 
 const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
@@ -149,19 +152,19 @@ const PickBets = () => {
         seventhVals.length > 0
       ) {
         setCalcValue(fifthVals.length * sixthVals.length * seventhVals.length);
-      }else if (
+      } else if (
         sixthVals.length > 0 &&
         seventhVals.length > 0 &&
         eighthVals.length > 0
       ) {
         setCalcValue(sixthVals.length * seventhVals.length * eighthVals.length);
-      }else if (
+      } else if (
         seventhVals.length > 0 &&
         eighthVals.length > 0 &&
         ninthVals.length > 0
       ) {
         setCalcValue(seventhVals.length * eighthVals.length * ninthVals.length);
-      }else if (
+      } else if (
         eighthVals.length > 0 &&
         ninthVals.length > 0 &&
         tenthVals.length > 0
@@ -219,42 +222,17 @@ const PickBets = () => {
   return (
     <div>
       <div>
-        <div class="dropdown">
-          <span>{tableData.RaceID.name}</span>
-          <div class="dropdown-content">
-            <p
-              value={BELMONT_PARK_OCT_29_2021.RaceID.name}
-              onClick={() => handleTableData(BELMONT_PARK_OCT_29_2021)}
-            >
-              {BELMONT_PARK_OCT_29_2021.RaceID.name}
-            </p>
-            <p
-              value={KEENELAND_10_29_21.RaceID.name}
-              onClick={() => handleTableData(KEENELAND_10_29_21)}
-            >
-              {KEENELAND_10_29_21.RaceID.name}
-            </p>
-          </div>
-        </div>
-        <div class="dropdown">
-          <span>Pick {pickType}</span>
-          <div class="dropdown-content">
-            <p onClick={() => handlePickType(3)}>Pick 3</p>
-            <p onClick={() => handlePickType(4)}>Pick 4</p>
-            <p onClick={() => handlePickType(5)}>Pick 5</p>
-          </div>
-        </div>
-        <div className="cost-block">
-          <button
-            className="cost-block__button"
-            onClick={() => handleCalculation()}
-          >
-            Calculate Wage Cost
-          </button>
-          <div id="cost-value" className="cost-block__value">
-            ${calcValue}.00
-          </div>
-        </div>
+        <TableDataDropdown
+          tableData={tableData}
+          BEL_10_29_21={BELMONT_PARK_OCT_29_2021}
+          KEE_10_29_21={KEENELAND_10_29_21}
+          handleTableData={handleTableData}
+        />
+        <PickTypeMenu handlePickType={handlePickType} pickType={pickType} />
+        <CostRender
+          handleCalculation={handleCalculation}
+          calcValue={calcValue}
+        />
       </div>
       <table>
         <tbody>
@@ -268,7 +246,7 @@ const PickBets = () => {
           <SeventhRow handlePicks={handlePicks} tableData={tableData} />
           <EighthRow handlePicks={handlePicks} tableData={tableData} />
           <NinthRow handlePicks={handlePicks} tableData={tableData} />
-          <TenthRow handlePicks={handlePicks} tableData={tableData} /> 
+          <TenthRow handlePicks={handlePicks} tableData={tableData} />
         </tbody>
       </table>
     </div>

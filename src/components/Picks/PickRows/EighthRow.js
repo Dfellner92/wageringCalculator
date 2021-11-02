@@ -1,22 +1,22 @@
 import React from "react";
 
-import { RACE_PLACEMENTS } from "../../util/race-placements";
+import { RACE_PLACEMENTS } from "../../../util/race-placements";
 
-function TenthRow(props) {
+function EighthRow(props) {
   return (
     <tr>
       <td
-        id="race_10"
+        id="race_08"
         style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
       >
         {props.tableData.RaceID.abbreviation +
           " " +
-          props.tableData.Race10.raceInfo.number}
+          props.tableData.Race08.raceInfo.number}
       </td>
       {RACE_PLACEMENTS.map((place) =>
-        props.tableData.Race10.Races[place] !== "" ? (
+        props.tableData.Race08.Races[place] !== "" ? (
           <td
-            id={`Ten ${place}`}
+            id={`8 ${place}`}
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -24,16 +24,16 @@ function TenthRow(props) {
             }}
             onClick={() =>
               props.handlePicks(
-                `Ten ${place}`,
-                props.tableData.Race10.Races[place]
+                `8 ${place}`,
+                props.tableData.Race08.Races[place]
               )
             }
           >
-            {props.tableData.Race10.Races[place]}
+            {props.tableData.Race08.Races[place]}
           </td>
         ) : (
           <td
-            id={`Ten ${place}`}
+            id={`8 ${place}`}
             style={{
               height: "8vh",
               width: "4vw",
@@ -45,4 +45,4 @@ function TenthRow(props) {
   );
 }
 
-export default TenthRow;
+export default EighthRow;

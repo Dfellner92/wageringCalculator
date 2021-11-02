@@ -1,22 +1,22 @@
 import React from "react";
 
-import { RACE_PLACEMENTS } from "../../util/race-placements";
+import { RACE_PLACEMENTS } from "../../../util/race-placements";
 
-function ThirdRow(props) {
+function FifthRow(props) {
   return (
     <tr>
       <td
-        id="race_03"
+        id="race_05"
         style={{ border: "1px solid black", height: "8vh", width: "8vw" }}
       >
         {props.tableData.RaceID.abbreviation +
           " " +
-          props.tableData.Race03.raceInfo.number}
+          props.tableData.Race05.raceInfo.number}
       </td>
       {RACE_PLACEMENTS.map((place) =>
-        props.tableData.Race03.Races[place] !== "" ? (
+        props.tableData.Race05.Races[place] !== "" ? (
           <td
-            id={`3 ${place}`}
+            id={`5 ${place}`}
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -24,16 +24,16 @@ function ThirdRow(props) {
             }}
             onClick={() =>
               props.handlePicks(
-                `3 ${place}`,
-                props.tableData.Race03.Races[place]
+                `5 ${place}`,
+                props.tableData.Race05.Races[place]
               )
             }
           >
-            {props.tableData.Race03.Races[place]}
+            {props.tableData.Race05.Races[place]}
           </td>
         ) : (
           <td
-            id={`3 ${place}`}
+            id={`5 ${place}`}
             style={{
               height: "8vh",
               width: "4vw",
@@ -45,4 +45,4 @@ function ThirdRow(props) {
   );
 }
 
-export default ThirdRow;
+export default FifthRow;
