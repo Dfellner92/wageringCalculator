@@ -268,7 +268,7 @@ const PickBets = () => {
           <SeventhRow handlePicks={handlePicks} tableData={tableData} />
           <EighthRow handlePicks={handlePicks} tableData={tableData} />
           <NinthRow handlePicks={handlePicks} tableData={tableData} />
-          <TenthRow handlePicks={handlePicks} tableData={tableData} />
+          <TenthRow handlePicks={handlePicks} tableData={tableData} /> 
         </tbody>
       </table>
     </div>
