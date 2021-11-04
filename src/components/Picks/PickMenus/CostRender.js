@@ -1,7 +1,39 @@
 function CostRender(props) {
   const handleCalculation = () => {
+    //PICK 3 LOGIC
     if (props.pickType === 3) {
       if (
+        (props.firstVals.length > 0 &&
+          props.secondVals.length > 0 &&
+          props.thirdVals.length > 0 &&
+          props.fourthVals.length > 0) ||
+        (props.secondVals.length > 0 &&
+          props.thirdVals.length > 0 &&
+          props.fourthVals.length > 0 &&
+          props.fifthVals.length > 0) ||
+        (props.thirdVals.length > 0 &&
+          props.fourthVals.length > 0 &&
+          props.fifthVals.length > 0 &&
+          props.sixthVals.length > 0) ||
+        (props.fourthVals.length > 0 &&
+          props.fifthVals.length > 0 &&
+          props.sixthVals.length > 0 &&
+          props.seventhVals.length) ||
+        (props.fifthVals.length > 0 &&
+          props.sixthVals.length > 0 &&
+          props.seventhVals.length > 0 &&
+          props.eighthVals.length > 0) ||
+        (props.sixthVals.length > 0 &&
+          props.seventhVals.length > 0 &&
+          props.eighthVals.length > 0 &&
+          props.ninthVals.length > 0) ||
+        (props.seventhVals.length > 0 &&
+          props.eighthVals.length > 0 &&
+          props.ninthVals.length > 0 &&
+          props.tenthVals.length > 0)
+      ) {
+        alert("One Bet at a time please!");
+      } else if (
         props.firstVals.length > 0 &&
         props.secondVals.length > 0 &&
         props.thirdVals.length > 0
@@ -81,9 +113,44 @@ function CostRender(props) {
             props.ninthVals.length *
             props.tenthVals.length
         );
+      } else if (
+        props.firstVals.length > 0 ||
+        props.secondVals.length > 0 ||
+        props.thirdVals.length > 0 ||
+        props.fourthVals.length > 0 ||
+        props.fifthVals.length > 0 ||
+        props.sixthVals.length > 0 ||
+        props.seventhVals.length > 0 ||
+        props.eighthVals.length > 0 ||
+        props.ninthVals.length > 0 ||
+        props.tenthVals.length > 0 ||
+        (props.firstVals.length > 0 && props.secondVals.length > 0) ||
+        (props.secondVals.length > 0 && props.thirdVals.length > 0) ||
+        (props.thirdVals.length > 0 && props.fourthVals.length > 0) ||
+        (props.fourthVals.length > 0 && props.fifthVals.length > 0) ||
+        (props.fifthVals.length > 0 && props.sixthVals.length > 0) ||
+        (props.sixthVals.length > 0 && props.seventhVals.length > 0) ||
+        (props.seventhVals.length > 0 && props.eighthVals.length > 0) ||
+        (props.eighthVals.length > 0 && props.ninthVals.length > 0) ||
+        (props.ninthVals.length > 0 && props.tenthVals.length > 0)
+      ) {
+        alert("Not Enough Races Selected for a Pick 3!");
       }
-    } else if (props.pickType === 4) {
+    }
+    // PICK 4 LOGIC
+    else if (props.pickType === 4) {
       if (
+        props.secondVals.length > 0 &&
+        props.thirdVals.length > 0 &&
+        props.fourthVals.length > 0 &&
+        props.fifthVals.length > 0 &&
+        props.seventhVals.length > 0 &&
+        props.eighthVals.length > 0 &&
+        props.ninthVals.length > 0 &&
+        props.tenthVals.length > 0
+      ) {
+        alert("One bet at a time please!");
+      } else if (
         props.secondVals.length > 0 &&
         props.thirdVals.length > 0 &&
         props.fourthVals.length > 0 &&
@@ -95,8 +162,24 @@ function CostRender(props) {
             props.fourthVals.length *
             props.fifthVals.length
         );
+      } else if (
+        props.seventhVals.length > 0 &&
+        props.eighthVals.length > 0 &&
+        props.ninthVals.length > 0 &&
+        props.tenthVals.length > 0
+      ) {
+        props.setCalcValue(
+          props.seventhVals.length *
+            props.eighthVals.length *
+            props.ninthVals.length *
+            props.tenthVals.length
+        );
+      } else {
+        alert("Not Enough Races Selected for a Pick 4!");
       }
-    } else if (props.pickType === 5) {
+    }
+    // PICK 5 LOGIC
+    else if (props.pickType === 5) {
       if (
         props.firstVals.length > 0 &&
         props.secondVals.length > 0 &&

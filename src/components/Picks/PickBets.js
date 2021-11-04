@@ -140,6 +140,7 @@ const PickBets = () => {
           tenthVals={tenthVals}
           setCalcValue={setCalcValue}
           calcValue={calcValue}
+          tableData={tableData}
         />
       </div>
       <table>
