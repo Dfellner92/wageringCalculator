@@ -61,57 +61,55 @@ const PickBets = () => {
   };
 
   const handlePicks = (pairID, value) => {
-    if (pickType === 5 || pickType === 3 || pickType === 4) {
-      if (allPickIDs.includes(pairID)) {
-        setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
-        document.getElementById(pairID).style.backgroundColor = "";
-        if (pairID.slice(0, 1) === "1") {
-          setFirstVals(firstVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "2") {
-          setSecondVals(secondVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "3") {
-          setThirdVals(thirdVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "4") {
-          setFourthVals(fourthVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "5") {
-          setFifthVals(fifthVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "6") {
-          setSixthVals(sixthVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "7") {
-          setSeventhVals(seventhVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "8") {
-          setEighthVals(eighthVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 1) === "9") {
-          setNinthVals(ninthVals.filter((val) => val !== value));
-        } else if (pairID.slice(0, 3) === "Ten") {
-          setTenthVals(tenthVals.filter((val) => val !== value));
-        }
-      } else {
-        setAllPickIDs((state) => [...state, pairID]);
-        document.getElementById(pairID).style.backgroundColor =
-          "rgb(255, 80, 80)";
-        if (pairID.slice(0, 1) === "1") {
-          setFirstVals([...firstVals, value]);
-        } else if (pairID.slice(0, 1) === "2") {
-          setSecondVals([...secondVals, value]);
-        } else if (pairID.slice(0, 1) === "3") {
-          setThirdVals([...thirdVals, value]);
-        } else if (pairID.slice(0, 1) === "4") {
-          setFourthVals([...fourthVals, value]);
-        } else if (pairID.slice(0, 1) === "5") {
-          setFifthVals([...fifthVals, value]);
-        } else if (pairID.slice(0, 1) === "6") {
-          setSixthVals([...sixthVals, value]);
-        } else if (pairID.slice(0, 1) === "7") {
-          setSeventhVals([...seventhVals, value]);
-        } else if (pairID.slice(0, 1) === "8") {
-          setEighthVals([...eighthVals, value]);
-        } else if (pairID.slice(0, 1) === "9") {
-          setNinthVals([...ninthVals, value]);
-        } else if (pairID.slice(0, 3) === "Ten") {
-          console.log(pairID.slice(0, 3) === "Ten");
-          setTenthVals([...tenthVals, value]);
-        }
+    if (allPickIDs.includes(pairID)) {
+      setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
+      document.getElementById(pairID).style.backgroundColor = "";
+      if (pairID.slice(0, 1) === "1") {
+        setFirstVals(firstVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "2") {
+        setSecondVals(secondVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "3") {
+        setThirdVals(thirdVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "4") {
+        setFourthVals(fourthVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "5") {
+        setFifthVals(fifthVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "6") {
+        setSixthVals(sixthVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "7") {
+        setSeventhVals(seventhVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "8") {
+        setEighthVals(eighthVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 1) === "9") {
+        setNinthVals(ninthVals.filter((val) => val !== value));
+      } else if (pairID.slice(0, 3) === "Ten") {
+        setTenthVals(tenthVals.filter((val) => val !== value));
+      }
+    } else {
+      setAllPickIDs((state) => [...state, pairID]);
+      document.getElementById(pairID).style.backgroundColor =
+        "rgb(255, 80, 80)";
+      if (pairID.slice(0, 1) === "1") {
+        setFirstVals([...firstVals, value]);
+      } else if (pairID.slice(0, 1) === "2") {
+        setSecondVals([...secondVals, value]);
+      } else if (pairID.slice(0, 1) === "3") {
+        setThirdVals([...thirdVals, value]);
+      } else if (pairID.slice(0, 1) === "4") {
+        setFourthVals([...fourthVals, value]);
+      } else if (pairID.slice(0, 1) === "5") {
+        setFifthVals([...fifthVals, value]);
+      } else if (pairID.slice(0, 1) === "6") {
+        setSixthVals([...sixthVals, value]);
+      } else if (pairID.slice(0, 1) === "7") {
+        setSeventhVals([...seventhVals, value]);
+      } else if (pairID.slice(0, 1) === "8") {
+        setEighthVals([...eighthVals, value]);
+      } else if (pairID.slice(0, 1) === "9") {
+        setNinthVals([...ninthVals, value]);
+      } else if (pairID.slice(0, 3) === "Ten") {
+        console.log(pairID.slice(0, 3) === "Ten");
+        setTenthVals([...tenthVals, value]);
       }
     }
   };
