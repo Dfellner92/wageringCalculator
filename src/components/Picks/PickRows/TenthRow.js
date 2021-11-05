@@ -17,6 +17,7 @@ function TenthRow(props) {
         props.tableData.Race10.Races[place] !== "" ? (
           <td
             id={`Ten ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function TenthRow(props) {
         ) : (
           <td
             id={`Ten ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",

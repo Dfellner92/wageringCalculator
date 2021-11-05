@@ -17,6 +17,7 @@ function NinthRow(props) {
         props.tableData.Race09.Races[place] !== "" ? (
           <td
             id={`9 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function NinthRow(props) {
         ) : (
           <td
             id={`9 ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",

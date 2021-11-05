@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import BELMONT_PARK_OCT_29_2021 from "../../util/belmont-park-20211029";
 import KEENELAND_10_29_21 from "../../util/keeneland-20211029";
@@ -32,7 +32,15 @@ const PickBets = () => {
   const [eighthVals, setEighthVals] = useState([]);
   const [ninthVals, setNinthVals] = useState([]);
   const [tenthVals, setTenthVals] = useState([]);
+  //const [eleventhVals, setEleventhVals] = useState([]);
+  const [dataLength, setDataLength] = useState(0);
   const [calcValue, setCalcValue] = useState(0);
+
+  useEffect(() => {
+    setDataLength(Object.keys(tableData).length - 1);
+  }, [setDataLength, tableData]);
+
+  console.log(dataLength);
 
   const stateReset = () => {
     setAllPickIDs([]);
@@ -47,7 +55,7 @@ const PickBets = () => {
     setEighthVals([]);
     setNinthVals([]);
     setTenthVals([]);
-    handlePickStyles();
+    handlePickStyles(dataLength);
   };
 
   const handleTableData = (raceData) => {
@@ -138,6 +146,7 @@ const PickBets = () => {
           tenthVals={tenthVals}
           setCalcValue={setCalcValue}
           calcValue={calcValue}
+          dataLength={dataLength}
           tableData={tableData}
         />
       </div>

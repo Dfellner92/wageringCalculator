@@ -17,6 +17,7 @@ function FirstRow(props) {
         props.tableData.Race01.Races[place] !== "" ? (
           <td
             id={`1 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -32,10 +33,14 @@ function FirstRow(props) {
             {props.tableData.Race01.Races[place]}
           </td>
         ) : (
-          <td id={`1 ${place}`}
-          style={{
-            height: "8vh",
-            width: "4vw"}}></td>
+          <td
+            id={`1 ${place}`}
+            className="pick-button"
+            style={{
+              height: "8vh",
+              width: "4vw",
+            }}
+          ></td>
         )
       )}
     </tr>

@@ -17,6 +17,7 @@ function EighthRow(props) {
         props.tableData.Race08.Races[place] !== "" ? (
           <td
             id={`8 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function EighthRow(props) {
         ) : (
           <td
             id={`8 ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",

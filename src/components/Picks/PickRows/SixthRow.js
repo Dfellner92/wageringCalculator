@@ -17,6 +17,7 @@ function SixthRow(props) {
         props.tableData.Race06.Races[place] !== "" ? (
           <td
             id={`6 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function SixthRow(props) {
         ) : (
           <td
             id={`6 ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",

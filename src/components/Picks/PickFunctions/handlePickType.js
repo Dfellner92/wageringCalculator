@@ -1,4 +1,4 @@
-export function handlePickStyles() {
+export function handlePickStyles(dataLength) {
   document.getElementById("1 1").style.backgroundColor = "";
   document.getElementById("1 2").style.backgroundColor = "";
   document.getElementById("1 3").style.backgroundColor = "";
@@ -199,4 +199,4 @@ export function handlePickStyles() {
   document.getElementById("Ten 14").style.backgroundColor = "";
   document.getElementById("Ten 15").style.backgroundColor = "";
   document.getElementById("Ten 16").style.backgroundColor = "";
-};
+}

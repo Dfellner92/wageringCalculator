@@ -17,6 +17,7 @@ function FourthRow(props) {
         props.tableData.Race04.Races[place] !== "" ? (
           <td
             id={`4 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function FourthRow(props) {
         ) : (
           <td
             id={`4 ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",

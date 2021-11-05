@@ -17,6 +17,7 @@ function SecondRow(props) {
         props.tableData.Race02.Races[place] !== "" ? (
           <td
             id={`2 ${place}`}
+            className="pick-button"
             style={{
               border: "1px solid black",
               height: "8vh",
@@ -34,6 +35,7 @@ function SecondRow(props) {
         ) : (
           <td
             id={`2 ${place}`}
+            className="pick-button"
             style={{
               height: "8vh",
               width: "4vw",
