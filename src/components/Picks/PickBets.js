@@ -22,6 +22,7 @@ const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
   const [pickType, setPickType] = useState(3);
   const [allPickIDs, setAllPickIDs] = useState([]);
+  const [allPickValues, setAllPickValues] = useState([]);
   const [firstVals, setFirstVals] = useState([]);
   const [secondVals, setSecondVals] = useState([]);
   const [thirdVals, setThirdVals] = useState([]);
@@ -41,9 +42,12 @@ const PickBets = () => {
   }, [setDataLength, tableData]);
 
   console.log(dataLength);
+  console.log(allPickIDs);
+  console.log(allPickValues);
 
   const stateReset = () => {
     setAllPickIDs([]);
+    setAllPickValues([]);
     setCalcValue(0);
     setFirstVals([]);
     setSecondVals([]);
@@ -71,6 +75,7 @@ const PickBets = () => {
   const handlePicks = (pairID, value) => {
     if (allPickIDs.includes(pairID)) {
       setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
+      setAllPickValues(allPickValues.filter((val) => val !== value));
       document.getElementById(pairID).style.backgroundColor = "";
       if (pairID.slice(0, 1) === "1") {
         setFirstVals(firstVals.filter((val) => val !== value));
@@ -95,6 +100,7 @@ const PickBets = () => {
       }
     } else {
       setAllPickIDs((state) => [...state, pairID]);
+      setAllPickValues((state) => [...state, value]);
       document.getElementById(pairID).style.backgroundColor =
         "rgb(255, 80, 80)";
       if (pairID.slice(0, 1) === "1") {
