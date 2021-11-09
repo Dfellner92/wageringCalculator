@@ -56,6 +56,7 @@ const PickBets = () => {
     setAllPickIDs([]);
     setAllPickValues([]);
     setTotalWinningPicks([]);
+    setIsAWin(false);
     setCalcValue(0);
     setFirstVals([]);
     setSecondVals([]);
