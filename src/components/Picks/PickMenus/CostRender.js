@@ -1,4 +1,12 @@
 const CostRender = (props) => {
+  const handleIsAWin = () => {
+    if (props.totalWinningPicks.length === props.pickType) {
+      props.setIsAWin(true);
+    } else {
+      props.setIsAWin(false);
+    }
+  };
+
   const handleCalculation = () => {
     // DAILY DOUBLE LOGIC
     if (props.pickType === 2) {
@@ -31,22 +39,31 @@ const CostRender = (props) => {
         alert("One Bet at a time please!");
       } else if (props.firstVals.length > 0 && props.secondVals.length > 0) {
         props.setCalcValue(props.firstVals.length * props.secondVals.length);
+        handleIsAWin();
       } else if (props.secondVals.length > 0 && props.thirdVals.length > 0) {
         props.setCalcValue(props.secondVals.length * props.thirdVals.length);
+        handleIsAWin();
       } else if (props.thirdVals.length > 0 && props.fourthVals.length > 0) {
         props.setCalcValue(props.thirdVals.length * props.fourthVals.length);
+        handleIsAWin();
       } else if (props.fourthVals.length > 0 && props.fifthVals.length > 0) {
         props.setCalcValue(props.fourthVals.length * props.fifthVals.length);
+        handleIsAWin();
       } else if (props.fifthVals.length > 0 && props.sixthVals.length > 0) {
         props.setCalcValue(props.fifthVals.length * props.sixthVals.length);
+        handleIsAWin();
       } else if (props.sixthVals.length > 0 && props.seventhVals.length > 0) {
         props.setCalcValue(props.sixthVals.length * props.seventhVals.length);
+        handleIsAWin();
       } else if (props.seventhVals.length > 0 && props.eighthVals.length > 0) {
         props.setCalcValue(props.seventhVals.length * props.eighthVals.length);
+        handleIsAWin();
       } else if (props.eighthVals.length > 0 && props.ninthVals.length > 0) {
         props.setCalcValue(props.eighthVals.length * props.ninthVals.length);
+        handleIsAWin();
       } else if (props.ninthVals.length > 0 && props.tenthVals.length > 0) {
         props.setCalcValue(props.ninthVals.length * props.tenthVals.length);
+        handleIsAWin();
       } else if (
         props.firstVals.length > 0 ||
         props.secondVals.length > 0 ||
@@ -105,6 +122,7 @@ const CostRender = (props) => {
             props.secondVals.length *
             props.thirdVals.length
         );
+        handleIsAWin();
       } else if (
         props.secondVals.length > 0 &&
         props.thirdVals.length > 0 &&
@@ -115,6 +133,7 @@ const CostRender = (props) => {
             props.thirdVals.length *
             props.fourthVals.length
         );
+        handleIsAWin();
       } else if (
         props.thirdVals.length > 0 &&
         props.fourthVals.length > 0 &&
@@ -125,6 +144,7 @@ const CostRender = (props) => {
             props.fourthVals.length *
             props.fifthVals.length
         );
+        handleIsAWin();
       } else if (
         props.fourthVals.length > 0 &&
         props.fifthVals.length > 0 &&
@@ -135,6 +155,7 @@ const CostRender = (props) => {
             props.fifthVals.length *
             props.sixthVals.length
         );
+        handleIsAWin();
       } else if (
         props.fifthVals.length > 0 &&
         props.sixthVals.length > 0 &&
@@ -145,6 +166,7 @@ const CostRender = (props) => {
             props.sixthVals.length *
             props.seventhVals.length
         );
+        handleIsAWin();
       } else if (
         props.sixthVals.length > 0 &&
         props.seventhVals.length > 0 &&
@@ -155,6 +177,7 @@ const CostRender = (props) => {
             props.seventhVals.length *
             props.eighthVals.length
         );
+        handleIsAWin();
       } else if (
         props.seventhVals.length > 0 &&
         props.eighthVals.length > 0 &&
@@ -165,6 +188,7 @@ const CostRender = (props) => {
             props.eighthVals.length *
             props.ninthVals.length
         );
+        handleIsAWin();
       } else if (
         props.eighthVals.length > 0 &&
         props.ninthVals.length > 0 &&
@@ -175,6 +199,7 @@ const CostRender = (props) => {
             props.ninthVals.length *
             props.tenthVals.length
         );
+        handleIsAWin();
       } else if (
         props.firstVals.length > 0 ||
         props.secondVals.length > 0 ||
@@ -225,6 +250,7 @@ const CostRender = (props) => {
               props.fourthVals.length *
               props.fifthVals.length
           );
+          handleIsAWin();
         } else if (
           props.seventhVals.length > 0 &&
           props.eighthVals.length > 0 &&
@@ -237,6 +263,7 @@ const CostRender = (props) => {
               props.ninthVals.length *
               props.tenthVals.length
           );
+          handleIsAWin();
         }
       } else {
         alert("Not Enough Races Selected for a Pick 4!");
@@ -271,6 +298,7 @@ const CostRender = (props) => {
             props.fourthVals.length *
             props.fifthVals.length
         );
+        handleIsAWin();
       } else if (
         props.sixthVals.length > 0 &&
         props.seventhVals.length > 0 &&
@@ -285,10 +313,13 @@ const CostRender = (props) => {
             props.ninthVals.length *
             props.tenthVals.length
         );
+        handleIsAWin();
       } else {
         alert("Not Enough Races Selected for a Pick 5!");
       }
-    } else if (props.pickType === 6) {
+    }
+    // PICK 6 LOGIC
+    else if (props.pickType === 6) {
       if (
         props.fifthVals.length > 0 &&
         props.sixthVals.length > 0 &&
@@ -305,6 +336,7 @@ const CostRender = (props) => {
             props.ninthVals.length *
             props.tenthVals.length
         );
+        handleIsAWin();
       } else {
         alert("Not Enough Races Selected for a Pick 6!");
       }

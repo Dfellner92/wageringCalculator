@@ -17,6 +17,7 @@ import { handlePickStyles } from "./PickFunctions/handlePickType";
 import TableDataDropdown from "./PickMenus/TableDataDropdown";
 import PickTypeMenu from "./PickMenus/PickTypeMenu";
 import CostRender from "./PickMenus/CostRender";
+import WinnerMenu from "./PickMenus/WinnerMenu";
 
 const PickBets = () => {
   const [tableData, setTableData] = useState({ ...BELMONT_PARK_OCT_29_2021 });
@@ -36,6 +37,9 @@ const PickBets = () => {
   //const [eleventhVals, setEleventhVals] = useState([]);
   const [dataLength, setDataLength] = useState(0);
   const [calcValue, setCalcValue] = useState(0);
+  const [winner, setWinner] = useState("1");
+  const [totalWinningPicks, setTotalWinningPicks] = useState([]);
+  const [isAWin, setIsAWin] = useState(false);
 
   useEffect(() => {
     setDataLength(Object.keys(tableData).length - 1);
@@ -44,10 +48,14 @@ const PickBets = () => {
   console.log(dataLength);
   console.log(allPickIDs);
   console.log(allPickValues);
+  console.log(winner, typeof winner);
+  console.log(isAWin);
+  console.log(totalWinningPicks);
 
   const stateReset = () => {
     setAllPickIDs([]);
     setAllPickValues([]);
+    setTotalWinningPicks([]);
     setCalcValue(0);
     setFirstVals([]);
     setSecondVals([]);
@@ -72,10 +80,18 @@ const PickBets = () => {
     setPickType(number);
   };
 
+  const handleWinner = (winningHorse) => {
+    stateReset();
+    setWinner(winningHorse);
+  };
+
   const handlePicks = (pairID, value) => {
     if (allPickIDs.includes(pairID)) {
       setAllPickIDs(allPickIDs.filter((pair) => pair !== pairID));
       setAllPickValues(allPickValues.filter((val) => val !== value));
+      if (value === winner) {
+        setTotalWinningPicks(totalWinningPicks.slice(1));
+      }
       document.getElementById(pairID).style.backgroundColor = "";
       if (pairID.slice(0, 1) === "1") {
         setFirstVals(firstVals.filter((val) => val !== value));
@@ -101,6 +117,9 @@ const PickBets = () => {
     } else {
       setAllPickIDs((state) => [...state, pairID]);
       setAllPickValues((state) => [...state, value]);
+      if (value === winner) {
+        setTotalWinningPicks([...totalWinningPicks, value]);
+      }
       document.getElementById(pairID).style.backgroundColor =
         "rgb(255, 80, 80)";
       if (pairID.slice(0, 1) === "1") {
@@ -131,6 +150,11 @@ const PickBets = () => {
   return (
     <div>
       <div>
+        <WinnerMenu
+          winner={winner}
+          setWinner={setWinner}
+          handleWinner={handleWinner}
+        />
         <TableDataDropdown
           tableData={tableData}
           BEL_10_29_21={BELMONT_PARK_OCT_29_2021}
@@ -150,11 +174,17 @@ const PickBets = () => {
           eighthVals={eighthVals}
           ninthVals={ninthVals}
           tenthVals={tenthVals}
+          allPickValues={allPickValues}
+          winner={winner}
+          totalWinningPicks={totalWinningPicks}
+          setTotalWinningPicks={setTotalWinningPicks}
+          setIsAWin={setIsAWin}
           setCalcValue={setCalcValue}
           calcValue={calcValue}
           dataLength={dataLength}
           tableData={tableData}
         />
+        {isAWin ? <div class="dropdown">It's a win!</div> : <></>}
       </div>
       <table>
         <tbody>
