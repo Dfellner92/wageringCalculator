@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wageringCalculator/static/css/main.39b5115d.chunk.css",
+    "main.js": "/wageringCalculator/static/js/main.1cbd3ee1.chunk.js",
+    "main.js.map": "/wageringCalculator/static/js/main.1cbd3ee1.chunk.js.map",
+    "runtime-main.js": "/wageringCalculator/static/js/runtime-main.ee8c0046.js",
+    "runtime-main.js.map": "/wageringCalculator/static/js/runtime-main.ee8c0046.js.map",
+    "static/js/2.fa263f07.chunk.js": "/wageringCalculator/static/js/2.fa263f07.chunk.js",
+    "static/js/2.fa263f07.chunk.js.map": "/wageringCalculator/static/js/2.fa263f07.chunk.js.map",
+    "static/js/3.6b4bc732.chunk.js": "/wageringCalculator/static/js/3.6b4bc732.chunk.js",
+    "static/js/3.6b4bc732.chunk.js.map": "/wageringCalculator/static/js/3.6b4bc732.chunk.js.map",
+    "index.html": "/wageringCalculator/index.html",
+    "static/css/main.39b5115d.chunk.css.map": "/wageringCalculator/static/css/main.39b5115d.chunk.css.map",
+    "static/js/2.fa263f07.chunk.js.LICENSE.txt": "/wageringCalculator/static/js/2.fa263f07.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ee8c0046.js",
+    "static/js/2.fa263f07.chunk.js",
+    "static/css/main.39b5115d.chunk.css",
+    "static/js/main.1cbd3ee1.chunk.js"
+  ]
+}
