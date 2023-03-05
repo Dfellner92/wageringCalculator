@@ -1,13 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Exacta from "./components/Exacta/Exacta";
-import Trifecta from "./components/Trifecta/Trifecta";
-import Superfecta from "./components/Superfecta/Superfecta";
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Exacta from './components/Exacta/Exacta';
+import Trifecta from './components/Trifecta/Trifecta';
+import Superfecta from './components/Superfecta/Superfecta';
 
-import PickBets from "./components/Picks/PickBets";
+import PickBets from './components/Picks/PickBets';
 
 function App() {
   return (
@@ -15,10 +15,18 @@ function App() {
       <Navbar />
       <Router>
         <Switch>
-          <Route exact path="/" component={Exacta} />
-          <Route exact path="/trifecta" component={Trifecta} />
-          <Route exact path="/superfecta" component={Superfecta} />
-          <Route exact path="/picks" component={PickBets} />
+          <Route exact path="/wageringCalculator" component={Exacta} />
+          <Route
+            exact
+            path="/wageringCalculator/trifecta"
+            component={Trifecta}
+          />
+          <Route
+            exact
+            path="/wageringCaclulator/superfecta"
+            component={Superfecta}
+          />
+          <Route exact path="/wageringCalculator/picks" component={PickBets} />
         </Switch>
       </Router>
     </div>
